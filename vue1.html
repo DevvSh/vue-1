@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 3 Concepts</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Vue 3 Concepts</h1>
+    <div v-if = "showMessage"> 
+      <P> {{ title }}</P>
+    </div>
+    <button @click="toggleShowBooks">
+      <span v-if="showMessage">Hide name</span>
+      <span v-else> {{ Else }} </span>
+    </button>
+
+    <div v-show = "showMessage"> this message is shown using v-show </div>
+ 
+    <ul>
+      <li v-for="item in items" :key="item">{{ item }}</li>
+    </ul>
+
+    <ul>
+      <li v-for="message in messages" :key="message.id">
+        <!-- Conditionally render based on item.show -->
+        <span v-if="message.show">{{ message.name }}</span>
+        <span v-else>message is hidden</span>
+      </li>
+    </ul>
+    
+    <form @submit.prevent="submitForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" v-model="formData.name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" v-model="formData.email" required>
+      
+      <button type="submit">Submit</button>
+    </form>
+    
+    <div>
+      <h2>Form Data:</h2>
+      <p>Name: {{ formData.name }}</p>
+      <p>Email: {{ formData.email }}</p>
+    </div>
+    
+  </div>
+
+  <script src="vue.js"></script>
+</body>
+</html>
